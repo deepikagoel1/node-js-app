@@ -1,31 +1,86 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "confusion",
+  "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "dependencies": {
-    "ejs": "^3.1.5",
-    "express": "^4.15.2"
-  },
+  "main": "index.html",
   "devDependencies": {
-    "got": "^11.3.0",
-    "tape": "^4.7.0"
+    "browser-sync": "^2.23.6",
+    "clean-css": "^5.1.2",
+    "cssmin": "^0.4.3",
+    "del": "^3.0.0",
+    "grunt": "^1.0.2",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-imagemin": "^4.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-filerev": "^2.3.1",
+    "grunt-sass": "^2.1.0",
+    "grunt-usemin": "^0.1.13",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-flatmap": "^1.0.2",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-rev": "^8.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-usemin": "^0.3.29",
+    "htmlmin": "^0.0.4",
+    "jit-grunt": "^0.10.0",
+    "lite-server": "^2.6.1",
+    "onchange": "^7.1.0",
+    "parallelshell": "^3.0.2",
+    "rimraf": "^2.6.2",
+    "time-grunt": "^1.4.0",
+    "uglify-js": "^2.4.11",
+    "usemin-cli": "^0.0.7"
+  },
+  "scripts": {
+    "start": "process.env.Port = 8000 |npm run watch:all",
+    "build:production": "node --version",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server",
+    "scss": "node-sass -o css/ css/",
+    "watch:scss": "onchange 'css/*.scss' -- npm run scss",
+    "watch:all": "parallelshell 'npm run watch:scss' 'npm run lite'",
+    "clean": "rimraf dist",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+    "imagemin": "imagemin img/* -o dist/img",
+    "usemin": "usemin contactus.html -d dist --htmlmin -o dist/contactus.html && usemin index.html -d dist --htmlmin -o dist/index.html && usemin aboutus.html -d dist --htmlmin -o dist/aboutus.html",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin",
+    "preinstall": "npx npm-force-resolutions"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "git+https://github.com/goeld9911/Bootstrap4.git"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "author": "Deepika",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goeld9911/Bootstrap4/issues"
+  },
+  "homepage": "https://github.com/goeld9911/Bootstrap4#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootstrap-social": "^5.1.1",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.7.2",
+    "popper.js": "^1.12.9"
+  },
+  "resolutions": {
+    "yargs-parser": "^13.1.2"
+  },
+  "keywords": [],
+  "description": ""
 }
